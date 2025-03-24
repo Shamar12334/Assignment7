@@ -1,10 +1,10 @@
 package assignment;
 
-public class AnyTypeMergeSort <T extends Comparable<?>>
+public class AnyTypeMergeSort <T extends Comparable<T>>
 {
     public void mergeSort(T[] arr, int lowerBound, int upperBound)
     {
-        if(lowerBound > upperBound)
+        if(lowerBound >= upperBound)
             return;
         int mid = (int) Math.floor((upperBound+lowerBound)/2);
         mergeSort(arr,lowerBound,mid);
@@ -17,14 +17,14 @@ public class AnyTypeMergeSort <T extends Comparable<?>>
         int leftArrayLength = middleNumber-lowerBound+1;
         int rightArrayLength = upperBound-middleNumber;
         // arrays
-        T []  rightArray= new T[rightArrayLength];
-        T [] leftArray= new T[leftArrayLength];
+        T []  rightArray=  (T[]) new Comparable[rightArrayLength];
+        T [] leftArray= (T[]) new  Comparable[leftArrayLength];
         //new arrays getting filled
-        for(int i=0; i < leftArray; i++)
+        for(int i=0; i < leftArrayLength; i++)
         {
             leftArray[i] =  arr[lowerBound+i];
         }
-        for(int j=0; j < rightArray; j++)
+        for(int j=0; j < rightArrayLength; j++)
         {
             rightArray[j]=  arr[middleNumber+j+1];
         }
@@ -33,7 +33,7 @@ public class AnyTypeMergeSort <T extends Comparable<?>>
         int k = lowerBound;
         while (i < leftArrayLength && j < rightArrayLength)
         {
-            if(leftArray[i] < rightArray[j])
+            if(leftArray[i].compareTo(rightArray[j]) <= 0)
             {
                 arr[k] =leftArray[i];
                 i +=1;
@@ -55,6 +55,8 @@ public class AnyTypeMergeSort <T extends Comparable<?>>
         while(j < rightArrayLength)
         {
             arr[k]= rightArray[j];
+            k++;
+            j++;
         }
     }
 }

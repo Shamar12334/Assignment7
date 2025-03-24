@@ -24,11 +24,11 @@ public class IntegerMergeSort
         int []  rightArray= new int[rightArrayLength];
         int [] leftArray= new int[leftArrayLength];
         //new arrays getting filled
-        for(int i :  leftArray)
+        for(int i=0; i < leftArrayLength; i++)
         {
             leftArray[i] = arr[lowerBound+i];
         }
-        for(int j : rightArray)
+        for(int j=0;  j< rightArrayLength; j++)
         {
             rightArray[j]= arr[mid+j+1];
         }
@@ -59,6 +59,8 @@ public class IntegerMergeSort
         while(j < rightArrayLength)
         {
             arr[k]= rightArray[j];
+            k++;
+            j++;
         }
     }
 }
